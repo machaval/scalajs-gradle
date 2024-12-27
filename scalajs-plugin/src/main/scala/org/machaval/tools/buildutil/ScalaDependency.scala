@@ -109,12 +109,6 @@ object ScalaDependency {
     }
 
     override protected def verify(found: Dependency.WithVersion, project: Project): Unit = {
-      //    if found.dependency.isInstanceOf[Scala2Dependency] then // TODO get rid of casts
-      //      val scalaVersion: String = getScalaVersion(found.dependency.asInstanceOf[Scala2Dependency])
-      //      val version: Scala2Dependency.Version = found.version.asInstanceOf[Scala2Dependency.Version]
-      //      if version.scalaVersion != scalaVersion then project.getLogger.info(
-      //        s"Found $found, but the project uses Scala 2 version $scalaVersion", null, null, null
-      //      )
       super.verify(found, project)
     }
   }

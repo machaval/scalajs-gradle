@@ -45,6 +45,9 @@ abstract class LinkTask extends DefaultTask with ScalaJSTask {
   @Classpath
   final def getRuntimeClassPath: FileCollection = sourceSet.getRuntimeClasspath
 
+  @Classpath
+  final def getCompileClasspath: FileCollection = sourceSet.getCompileClasspath
+
   @OutputFile
   final def getReportTextFile: File = outputFile("linking-report.txt")
 
