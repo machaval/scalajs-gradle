@@ -1,0 +1,18 @@
+plugins {
+    id "io.github.machaval.scalajs" version "2.0.3-SNAPSHOT"
+}
+
+dependencies {
+    api project(':common')
+    scalajs "org.scala-js:scalajs-linker_2.12:$scalaJsVersion"
+    implementation("org.scala-js:scalajs-library_2.12:$scalaJsVersion")
+}
+
+link {
+    optimization = 'Fast'            // one of: 'Fast', 'Full'
+    moduleKind = 'CommonJSModule'  // one of: 'NoModule', 'ESModule', 'CommonJSModule'
+    moduleSplitStyle = 'SmallestModules'   // one of: 'FewestModules', 'SmallestModules'
+    prettyPrint = true
+    optimizer = true
+    esVersion = 'ECMAScript 2018 (edition 9)'
+}

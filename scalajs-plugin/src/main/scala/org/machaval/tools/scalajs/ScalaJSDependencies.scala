@@ -11,12 +11,12 @@ import org.machaval.tools.buildutil.Version
 import scala.collection.immutable.Seq
 
 object ScalaJSDependencies {
-  val configurationName: String = "scalajs"
-
-  private val scalaJS: Configurations = Configurations.forName(configurationName)
+  val scalaJsConfigurationName: String = "scalajs"
+  private val scalaJS: Configurations = Configurations.forName(scalaJsConfigurationName)
 
   private val group: String = "org.scala-js"
   private val versionDefault: String = "1.9.0"
+
   private object Library extends ScalaDependency.Scala2(group, "scalajs-library")
 
   private object Linker extends ScalaDependency.Scala2(group, "scalajs-linker")

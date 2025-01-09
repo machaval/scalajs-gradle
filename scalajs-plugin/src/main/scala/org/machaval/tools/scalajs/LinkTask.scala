@@ -31,7 +31,7 @@ abstract class LinkTask extends DefaultTask with ScalaJSTask {
     // So, dynamically-loaded classes are mentioned indirectly, only in the ScalaJS class.
     // It seems that expanding the classpath once, here, is enough for everything to work.
 
-    Gradle.addToClassPath(this, Gradle.getConfiguration(getProject, ScalaJSDependencies.configurationName).asScala)
+    Gradle.addToClassPath(this, Gradle.getConfiguration(getProject, ScalaJSDependencies.scalaJsConfigurationName).asScala)
     ScalaJS(task = this, linkTask = this).link()
   }
   protected def sourceSetName: String = SourceSet.MAIN_SOURCE_SET_NAME
@@ -46,7 +46,9 @@ abstract class LinkTask extends DefaultTask with ScalaJSTask {
   final def getRuntimeClassPath: FileCollection = sourceSet.getRuntimeClasspath
 
   @Classpath
-  final def getCompileClasspath: FileCollection = sourceSet.getCompileClasspath
+  final def getCompileClasspath: FileCollection = {
+    sourceSet.getOutput.plus(sourceSet.getCompileClasspath)
+  }
 
   @OutputFile
   final def getReportTextFile: File = outputFile("linking-report.txt")

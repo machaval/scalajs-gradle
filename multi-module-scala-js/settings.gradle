@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
+rootProject.name = 'multi-module-scala-js'
+
+
+include 'common'
+include 'js'
+include 'jvm'
+

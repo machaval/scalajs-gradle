@@ -1,0 +1,18 @@
+plugins {
+    id "io.github.machaval.scalajs" version "2.0.3-SNAPSHOT"
+}
+
+
+dependencies {
+    scalajs "org.scala-js:scalajs-linker_2.12:$scalaJsVersion"
+    implementation group: 'org.parboiled', name: 'parboiled_sjs1_2.12', version: parboiledVersion
+}
+
+link {
+    optimization = 'Fast'            // one of: 'Fast', 'Full'
+    moduleKind = 'NoModule'  // one of: 'NoModule', 'ESModule', 'CommonJSModule'
+    moduleSplitStyle = 'SmallestModules'   // one of: 'FewestModules', 'SmallestModules'
+    prettyPrint = true
+    optimizer = true
+    esVersion = 'ECMAScript 2018 (edition 9)'
+}

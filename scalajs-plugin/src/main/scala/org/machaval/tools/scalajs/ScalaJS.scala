@@ -109,7 +109,8 @@ class ScalaJS(task: ScalaJSTask, linkTask: LinkTask) {
     try {
       val report: Report = Await.result(atMost = Duration.Inf, awaitable = PathIRContainer
         .fromClasspath({
-          val files: Seq[File] = linkTask.getCompileClasspath.getFiles.asScala.toSeq
+          val files: Seq[File] = linkTask.getRuntimeClassPath.getFiles.asScala.toSeq
+          logger.log(LogLevel.INFO, "Link Classpath is: " + files.toString())
           val paths = files.map(_.toPath)
           paths
         })
